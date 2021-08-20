@@ -1,15 +1,16 @@
 $(function () {
 
-  //счетчик этажей при клике
   var currentFloor = 2;
   var counterUp = $('.counter-up');
   var counterDown = $('.counter-down');
   var floorPath = $('.main__image path');
+  var flatPath = $('.flats path');
   var modal = $('.modal');
   var modalCloseButton = $('.modal__close');
   var viewFlatsButton = $('.view-flats');
 
 
+  //счетчик этажей наведении
   floorPath.on('mouseover', function () {
     floorPath.removeClass("current-floor");
     currentFloor = $(this).attr('data-floor');
@@ -46,6 +47,7 @@ $(function () {
   //закрытие модального окна по кнопке
   viewFlatsButton.on('click', function () {
     modal.toggleClass('is-open');
+    $('.mobile-menu').removeClass('active');
   });
 
   //закрытие модального окна
@@ -63,6 +65,11 @@ $(function () {
   //появление мобильного меню
   $('.mobile-btn').on('click', function () {
     $('.mobile-menu').toggleClass('active');
+  });
+
+  //закрытие моб. меню при нажатии на ссылку
+  $('.header__menu-item').on('click', function () {
+    $('.mobile-menu').removeClass('active');
   });
 
   //включаем перемещение блоков
